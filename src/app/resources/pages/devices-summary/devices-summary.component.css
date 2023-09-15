@@ -1,0 +1,12 @@
+.container {
+    width: 80%;
+  }
+    
+  .info-container {
+    height: 100%;
+    width: 80%;
+  }
+  
+  h3{
+    padding-left: 10px;
+  }

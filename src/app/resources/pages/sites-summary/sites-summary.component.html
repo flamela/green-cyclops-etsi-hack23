@@ -1,0 +1,15 @@
+<h3> Resources > Sites ><ins> Summary</ins></h3>
+
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-grid-list class="grid-container" cols="3" rowHeight="100px">
+    <mat-grid-tile *ngFor="let component of components | async" [colspan]="component.cols" [rowspan]="component.rows"
+      [style.background]="component.color">
+
+      <app-sites-summary-map class="map-container" [dataInput]="sites$ | async" *ngIf="component.compName==='sites-summary-map'"></app-sites-summary-map>
+      <app-sites-summary-info class="info-container" [dataInput]="sites$ | async" *ngIf="component.compName==='sites-summary-info'"></app-sites-summary-info>
+      <app-sites-summary-paths  class="paths-container"  [dataInput]="paths$ | async" *ngIf="component.compName==='sites-summary-paths'"></app-sites-summary-paths>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+</div>

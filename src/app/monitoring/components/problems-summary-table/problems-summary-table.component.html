@@ -1,0 +1,113 @@
+<table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue </th>
+        <td mat-cell *matCellDef="let row"> {{row.parent}} </td>
+    </ng-container>
+    <!--ACTIONS -->
+    <ng-container matColumnDef="info">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Info</th>
+        <td mat-cell *matCellDef="let row">
+            <button (click)="search(row.id)" mat-icon-button color="primary">
+                <mat-icon>search</mat-icon>
+            </button>
+            <!--<button (click)="edit(row.id)" mat-icon-button color="primary">
+              <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="delete(row.id)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+          </button>-->
+        </td>
+    </ng-container>
+
+    <!--EXPAND -->
+    <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="expand row"
+                (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+                <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+                <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+            <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <mat-list class="detail-container">
+            
+            <mat-list-item>
+              <span matListItemTitle>Created</span>
+              <span matListItemLine>{{element.created | date:'dd/MM/yyyy'}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Last Update</span>
+              <span>{{element.lastupdate | date:'dd/MM/yyyy'}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>State</span>
+              <span>{{element.state}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Status</span>
+              <span>{{element.status}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Type</span>
+              <span>{{element.type}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Subtype</span>
+              <span>{{element.subtype}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Level</span>
+              <span>{{element.level}}</span>
+            </mat-list-item>
+          </mat-list>
+          <mat-list class="detail-container">
+            <mat-list-item>
+              <span matListItemTitle>Longitude</span>
+              <span matListItemLine>{{element.longitude}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Latitude</span>
+              <span>{{element.latitude}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Altitude</span>
+              <span>{{element.altitude}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>FlightPath</span>
+              <span>{{element.flightPath}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>FlightId</span>
+              <span>{{element.flightId}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>RelatesTo</span>
+              <span>{{element.relatesTo}}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Parent</span>
+              <span>{{element.parent}}</span>
+            </mat-list-item>
+          </mat-list>
+            </div>
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+
+
+</table>

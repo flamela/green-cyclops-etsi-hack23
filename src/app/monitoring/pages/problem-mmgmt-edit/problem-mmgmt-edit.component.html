@@ -1,0 +1,106 @@
+<h3> Monitoring > Problem >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+
+<div class="container">
+    <form [formGroup]="form" class="form">
+        <!--observerId-->
+        <mat-form-field>
+            <mat-label>Observer Id</mat-label>
+            <input matInput formControlName="observerId">
+            <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--Operation (relate to)-->
+        <a routerLink="/management/operations" routerLinkActive="active"><span class="text-colour">Add a new operation</span></a>
+        <mat-form-field>
+            <mat-label>Operation (relate to)</mat-label>
+            <mat-select formControlName="relatesTo" placeholder="Select an operation" (selectionChange)="onOperationChange($event.value)">
+                <mat-option #matOption *ngFor="let operation of operations$ | async" [value]="operation.name">
+                    {{operation.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--parent-->
+        <mat-form-field>
+            <mat-label>Issue (parent)</mat-label>
+
+
+            <mat-select formControlName="parent" placeholder="Select an issue">
+                <mat-option #matOption *ngFor="let issue of issues$ | async" [value]="issue.parent">
+                    {{issue.parent}}
+                </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+
+
+        <!--STATE-->
+        <mat-form-field>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" placeholder="Select an state">
+                <mat-option value="INPROGRESS">INPROGRESS</mat-option>
+                <mat-option value="CLOSED">CLOSED</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--STATUS-->
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Select an status">
+                <mat-option value="OK">OK</mat-option>
+                <mat-option value="INIT">INIT</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--TYPE-->
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <input matInput formControlName="type">
+            <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--subtype-->
+        <mat-form-field>
+            <mat-label>Sub Type</mat-label>
+            <input matInput formControlName="subtype">
+            <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--level-->
+        <mat-form-field>
+            <mat-label>Level</mat-label>
+            <input matInput formControlName="level">
+            <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--description-->
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+            <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+
+        <!--DEVICES
+        <a routerLink="/resources/devices" routerLinkActive="active"><span class="text-colour">Add a new device</span></a>
+        <mat-form-field>
+            <mat-label>Select a Device</mat-label>
+            <mat-select formControlName="relatedTo" placeholder="Select a device">
+                <mat-option #matOption *ngFor="let device of devices$ | async" [value]="device.name">
+                    {{device.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>-->
+
+        <!--Create Button-->
+        <button *ngIf="!isAddMode" mat-flat-button color="primary" (click)="update()">Update</button>
+        <button *ngIf="isAddMode" mat-flat-button color="primary" (click)="create()">Add</button>
+    </form>
+</div>

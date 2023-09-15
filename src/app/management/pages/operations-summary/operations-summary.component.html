@@ -1,0 +1,30 @@
+<h3> Management > Operations > <ins>Summary</ins></h3>
+<div class="tree">
+    <ul>
+        <li *ngFor="let item of items">
+
+            <div class="items-components">
+                <div class="toggle" (click)="toggleCollapse(item)">
+                    <span class="toggle-icon material-icons">{{ item.expanded ? 'keyboard_arrow_down':'keyboard_arrow_right' }}</span>{{ item.label }}
+                </div>
+                <button class="search-button-icons material-icons" (click)="onSearchClick(item)">search</button>
+            </div>
+
+            <ul *ngIf="item.expanded">
+                <li *ngFor="let subItem1 of item.subItems">
+                    <div class="toggle sub-toggle" (click)="toggleCollapse(subItem1)">
+                        <span class="toggle-icon material-icons">{{ subItem1.expanded ? 'keyboard_arrow_down'
+                            :'keyboard_arrow_right' }}</span>
+                        {{ subItem1.label }}
+                    </div>
+                    <ul *ngIf="subItem1.expanded">
+                        <li *ngFor="let subItem2 of subItem1.subItems">
+                            {{ subItem2.id }}  <a class="select-link" (click)="onSearchClick(subItem2)"> ...view</a>
+                            <!--<button class="search-button-icons material-icons" (click)="onSearchClick(subItem2)">search</button>-->
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

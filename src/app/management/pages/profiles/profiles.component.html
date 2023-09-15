@@ -1,0 +1,8 @@
+<!--PAGE CONTENT-->
+<div *ngIf="loaded$ | async">
+  <h3> Management > <ins>Profiles</ins></h3>
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <app-profiles-table class="table" [routerNavigate]="routerNavigate" [dataInput]="profiles$ | async"></app-profiles-table>
+    <button class="button" mat-flat-button color="primary" (click)="create()">New</button>
+  </div>
+</div>

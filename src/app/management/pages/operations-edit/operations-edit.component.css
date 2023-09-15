@@ -1,0 +1,13 @@
+
+.stepper-container{
+width: 80%;
+}
+form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+h3{
+  padding-left: 10px;
+}

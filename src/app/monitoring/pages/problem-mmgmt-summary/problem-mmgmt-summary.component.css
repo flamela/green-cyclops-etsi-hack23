@@ -1,0 +1,19 @@
+.container {
+    width: 80%;
+  }
+    
+  .table-container {
+    margin-top: 20px;
+    background-color: white;
+    height: 100%;
+    width: 80%;
+  }
+  
+  .info-container {
+    height: 100%;
+    width: 80%;
+  }
+  
+  h3{
+    padding-left: 10px;
+  }

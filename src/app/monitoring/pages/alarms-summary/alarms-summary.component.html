@@ -1,0 +1,15 @@
+<h3> Monitoring > Alarms ><ins> Summary</ins></h3>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-grid-list class="grid-container" cols="12" rowHeight="100px">
+    <mat-grid-tile *ngFor="let component of components | async" [colspan]="component.cols" [rowspan]="component.rows"
+      [style.background]="component.color">
+      <app-alarms-summary-map class="map-container" [dataInput]="alarm$" *ngIf="component.compName==='alarms-summary-map'"></app-alarms-summary-map>
+      <app-alarms-summary-info class="info-container" [dataInput]="alarm$" *ngIf="component.compName==='alarms-summary-info'"></app-alarms-summary-info>
+      <app-alarms-summary-images class="images-container" [dataInput]="alarm$" *ngIf="component.compName==='alarms-summary-images'"></app-alarms-summary-images>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+
+

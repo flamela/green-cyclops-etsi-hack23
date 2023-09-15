@@ -1,0 +1,57 @@
+<h3> Resources > Paths >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+
+<div class="container">
+    <form [formGroup]="form" class="form">
+        <!--NAME-->
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="f['name']?.invalid && f['name']?.touched">
+                <span *ngIf="f['name']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--STATE-->
+        <mat-form-field>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" placeholder="Select an state">
+                <mat-option value="UNAVAILABLE">UNAVAILABLE</mat-option>
+                <mat-option value="AVAILABLE">AVAILABLE</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--STATUS-->
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Select an status">
+                <mat-option value="ON">ON</mat-option>
+                <mat-option value="REPAIRING">REPAIRING</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--LOCATION-->
+        <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="locationArray">
+            <mat-error *ngIf="f['locationArray']?.invalid && f['locationArray']?.touched">
+                <span *ngIf="f['locationArray']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--SITE-->
+        <mat-form-field>
+            <mat-label>Select a Site</mat-label>
+            <mat-select formControlName="zoneId" placeholder="Select an site">
+                <mat-option #matOption *ngFor="let site of sites$ | async"
+                    [value]="site.name">
+                    {{site.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <p> <mat-checkbox formControlName="active">Active</mat-checkbox></p>
+
+        <!--Create Button-->
+        <button *ngIf="!isAddMode" mat-flat-button color="primary" (click)="update()">Update</button>
+        <button *ngIf="isAddMode" mat-flat-button color="primary" (click)="create()">Add</button>
+    </form>
+</div>

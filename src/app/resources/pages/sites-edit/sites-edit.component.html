@@ -1,0 +1,66 @@
+<h3> Resources > Sites >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+
+<div class="container">
+    <form [formGroup]="form" class="form">
+        <!--NAME-->
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="f['name']?.invalid && f['name']?.touched">
+                <span *ngIf="f['name']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--PROFILE-->
+        <a routerLink="/management/profiles" routerLinkActive="active"><span class="text-colour">Add a new
+            profile</span></a>
+        <mat-form-field>
+            <mat-label>Select a Profile</mat-label>
+            <mat-select formControlName="profile" placeholder="Select a profile">
+                <mat-option #matOption *ngFor="let profile of profiles$ | async" [value]="profile.name">
+                    {{profile.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--DESCRIPTION-->
+        <mat-form-field>
+            <mat-label>description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <!--LONGITUDE-->
+        <mat-form-field>
+            <mat-label>Longitude</mat-label>
+            <input matInput formControlName="longitude">
+            <mat-error *ngIf="f['longitude']?.invalid && f['longitude']?.touched">
+                <span *ngIf="f['longitude']?.hasError('required')">This field is mandatory.</span>
+                <span *ngIf="f['longitude']?.hasError('pattern')">This field is invalid.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--LATITUDE-->
+        <mat-form-field>
+            <mat-label>latitude</mat-label>
+            <input matInput formControlName="latitude">
+            <mat-error *ngIf="f['latitude']?.invalid && f['latitude']?.touched">
+                <span *ngIf="f['latitude']?.hasError('required')">This field is mandatory.</span>
+                <span *ngIf="f['latitude']?.hasError('pattern')">This field is invalid.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--RADIO-->
+        <mat-form-field>
+            <mat-label>radio</mat-label>
+            <input matInput formControlName="radio">
+            <mat-error *ngIf="f['radio']?.invalid && f['radio']?.touched">
+                <span *ngIf="f['radio']?.hasError('required')">This field is mandatory.</span>
+                <span *ngIf="f['radio']?.hasError('pattern')">This field must be between 0-999</span>
+            </mat-error>
+        </mat-form-field>
+        <!--ACTIVE-->
+        <p> <mat-checkbox formControlName="active">Active</mat-checkbox></p>
+
+        <!--Create Button-->
+        <button *ngIf="!isAddMode" mat-flat-button color="primary" (click)="update()">Update</button>
+        <button *ngIf="isAddMode" mat-flat-button color="primary" (click)="create()">Add</button>
+    </form>
+</div>

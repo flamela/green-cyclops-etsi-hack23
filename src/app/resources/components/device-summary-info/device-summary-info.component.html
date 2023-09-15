@@ -1,0 +1,89 @@
+
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Created</span>
+        <span matListItemLine>{{device?.created | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Last Update</span>
+        <span>{{device?.lastUpdate | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>State</span>
+        <span>{{device?.state}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Status</span>
+        <span>{{device?.status}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Name</span>
+        <span>{{device?.name}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Serial</span>
+        <span>{{device?.serial}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Plate</span>
+        <span>{{device?.plate}}</span>
+    </mat-list-item>
+</mat-list>
+
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Expiration</span>
+        <span matListItemLine>{{device?.expiration | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Group</span>
+        <span>{{device?.assignedGroup}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Profile</span>
+        <span>{{device?.assignedProfile}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Center</span>
+        <span>{{device?.assignedCenter}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Related To</span>
+        <span>{{device?.relatedTo}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>is Parent</span>
+        <span>{{device?.isParent}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Zone</span>
+        <span>{{device?.zoneId}}</span>
+    </mat-list-item>
+</mat-list>
+
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Active</span>
+        <span matListItemLine>{{device?.active}}</span>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+</mat-list>
+
+<mat-list>
+    <mat-list-item>
+        <span matListItemTitle>Description</span>
+        <span>{{device?.description}}</span>
+    </mat-list-item>
+</mat-list>
+

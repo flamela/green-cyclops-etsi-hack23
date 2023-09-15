@@ -1,0 +1,9 @@
+<!--PAGE CONTENT-->
+<div *ngIf="loaded$ | async">
+    <h3> Resources > <ins>Paths</ins> </h3>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <app-paths-table class="table" [routerNavigate]="routerNavigate" [dataInput]="paths$ | async">
+        </app-paths-table>
+        <button class="button" mat-flat-button color="primary" (click)="create()">New</button>
+    </div>
+</div>

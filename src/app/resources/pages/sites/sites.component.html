@@ -1,0 +1,15 @@
+<!--PAGE CONTENT-->
+<div *ngIf="loaded$ | async">
+    <h3> Resources > <ins>Sites</ins> </h3>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <app-sites-table class="table" [routerNavigate]="routerNavigate" [dataInput]="sites$ | async"></app-sites-table>
+        <button class="button" mat-flat-button color="primary" (click)="create()">New</button>
+    </div>
+  <div class="row">
+    <iframe
+      src="http://"
+      width="1200"
+      height="400"
+    ></iframe>
+  </div>
+</div>

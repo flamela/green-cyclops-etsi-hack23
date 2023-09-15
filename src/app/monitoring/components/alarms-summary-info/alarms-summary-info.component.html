@@ -1,0 +1,63 @@
+
+
+
+    <mat-list class="detail-container">
+        <mat-list-item>
+            <span matListItemTitle>Created</span>
+            <span matListItemLine>{{alarm?.created | date:'dd/MM/yyyy'}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Last Update</span>
+            <span>{{alarm?.lastupdate | date:'dd/MM/yyyy'}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>State</span>
+            <span>{{alarm?.state}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Status</span>
+            <span>{{alarm?.status}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Type</span>
+            <span>{{alarm?.type}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Subtype</span>
+            <span>{{alarm?.subtype}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Level</span>
+            <span>{{alarm?.level}}</span>
+        </mat-list-item>
+    </mat-list>
+    <mat-list class="detail-container">
+        <mat-list-item>
+            <span matListItemTitle>Longitude</span>
+            <span matListItemLine>{{alarm?.longitude}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Latitude</span>
+            <span>{{alarm?.latitude}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Altitude</span>
+            <span>{{alarm?.altitude}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>FlightPath</span>
+            <span>{{alarm?.flightPath}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>FlightId</span>
+            <span>{{alarm?.flightId}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>RelatesTo</span>
+            <span>{{alarm?.relatesTo}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Parent</span>
+            <span>{{alarm?.parent}}</span>
+        </mat-list-item>
+    </mat-list>

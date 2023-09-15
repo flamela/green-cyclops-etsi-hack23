@@ -1,0 +1,87 @@
+<h3> Management > Operations >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <ng-container *ngIf="form" [formGroup]="form">
+        <!--firstFormGroup-->
+        <mat-stepper class="stepper-container" linear #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Operation info</ng-template>
+                    <!--NAME-->
+                    <mat-form-field>
+                        <mat-label>Operation Name</mat-label>
+                        <input matInput formControlName="name">
+                        <mat-error *ngIf="f['name']?.invalid && f['name']?.touched">
+                            <span *ngIf="f['name']?.hasError('required')">This field is mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <!--VALUE-->
+                    <mat-form-field>
+                        <mat-label>Value</mat-label>
+                        <input matInput formControlName="value">
+                        <mat-error *ngIf="f['value']?.invalid && f['value']?.touched">
+                            <span *ngIf="f['value']?.hasError('required')">This field is mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <!--DESCRIPTION-->
+                    <mat-form-field>
+                        <mat-label>description</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+                    <!--STATE-->
+                    <mat-form-field>
+                        <mat-label>State</mat-label>
+                        <mat-select formControlName="state" placeholder="Select an state">
+                            <mat-option value="UNAVAILABLE">UNAVAILABLE</mat-option>
+                            <mat-option value="AVAILABLE">AVAILABLE</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--STATUS-->
+                    <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status" placeholder="Select an status">
+                            <mat-option value="ON">ON</mat-option>
+                            <mat-option value="REPAIRING">REPAIRING</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--DEVICE TYPE-->
+                    <mat-form-field>
+                        <mat-label>Device Type</mat-label>
+                        <mat-select formControlName="assignedDeviceType" placeholder="Select an assignedDeviceType">
+                            <mat-option value="TYPE1">TYPE1</mat-option>
+                            <mat-option value="TYPE2">TYPE2</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--COMMENTS-->
+                    <mat-form-field>
+                        <mat-label>Comments</mat-label>
+                        <textarea matInput formControlName="comments"></textarea>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!--secondFormGroup-->
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Flight</ng-template>
+                    <!--FLIGHT-->
+                    <app-operation-flights-form
+                        [sendFlightActionToFlightForm]="sendFlightActionToFlightForm.asObservable()"></app-operation-flights-form>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+
+                        <button mat-raised-button color="primary" *ngIf="!isAddMode" (click)="update()">Update</button>
+                        <button mat-raised-button color="primary" *ngIf="isAddMode" (click)="create()">Create</button>
+
+                    </div>
+                </form>
+            </mat-step>
+
+        </mat-stepper>
+    </ng-container>
+</div>

@@ -1,0 +1,114 @@
+<h3> Resources > Devices >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+
+<div class="container">
+    <form [formGroup]="form" class="form">
+        <!--NAME-->
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="f['name']?.invalid && f['name']?.touched">
+                <span *ngIf="f['name']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--PLATE-->
+        <mat-form-field>
+            <mat-label>Plate</mat-label>
+            <input matInput formControlName="plate">
+            <mat-error *ngIf="f['plate']?.invalid && f['name']?.touched">
+                <span *ngIf="f['plate']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--SERIAL-->
+        <mat-form-field>
+            <mat-label>Serial</mat-label>
+            <input matInput formControlName="serial">
+            <mat-error *ngIf="f['serial']?.invalid && f['serial']?.touched">
+                <span *ngIf="f['serial']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--DESCRIPTION-->
+        <mat-form-field>
+            <mat-label>description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <!--ASSIGNED_GROUP-->
+        <mat-form-field>
+            <mat-label>Assigned Group</mat-label>
+            <mat-select formControlName="assignedGroup" placeholder="Select an Assigned Group">
+                <mat-option value="LAB">LAB</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--ASSIGNED_CENTER-->
+        <mat-form-field>
+            <mat-label>Assigned Center</mat-label>
+            <mat-select formControlName="assignedCenter" placeholder="Select an Assigned Center">
+                <mat-option value="CUVI">CUVI</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--EXPIRATION-->
+        <mat-form-field>
+            <mat-label>Choose an expiration date</mat-label>
+            <input matInput formControlName="expiration" placeholder="Select an Expiration Date" [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!--ASSIGNED_PROFILE-->
+        <a routerLink="/management/profiles" routerLinkActive="active"><span class="text-colour">Add a new
+                profile</span></a>
+        <mat-form-field>
+            <mat-label>Select a Profile</mat-label>
+            <mat-select formControlName="assignedProfile" placeholder="Select a profile">
+                <mat-option #matOption *ngFor="let profile of profiles$ | async" [value]="profile.name">
+                    {{profile.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--FLIGHT-->
+        <a routerLink="/management/flights" routerLinkActive="active"><span class="text-colour">Add a new
+                flight</span></a>
+        <mat-form-field>
+            <mat-label>Flight</mat-label>
+            <mat-select formControlName="relatedTo" placeholder="Select a flight">
+                <mat-option>None</mat-option>
+                <mat-option #matOption *ngFor="let flight of flights$ | async" [value]="flight.name">
+                    {{flight.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--ZONE-->
+        <a routerLink="/resources/sites" routerLinkActive="active"><span class="text-colour">Add a new site</span></a>
+        <mat-form-field>
+            <mat-label>Site</mat-label>
+            <mat-select formControlName="zoneId" placeholder="Select an Assigned Center">
+                <mat-option #matOption *ngFor="let site of sites$ | async" [value]="site.name">
+                    {{site.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--STATE-->
+        <mat-form-field>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" placeholder="Select an state">
+                <mat-option value="UNAVAILABLE">UNAVAILABLE</mat-option>
+                <mat-option value="AVAILABLE">AVAILABLE</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!--STATUS-->
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Select an status">
+                <mat-option value="ON">ON</mat-option>
+                <mat-option value="REPAIRING">REPAIRING</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <p> <mat-checkbox formControlName="active">Active</mat-checkbox></p>
+
+        <!--Create Button-->
+        <button *ngIf="!isAddMode" mat-flat-button color="primary" (click)="update()">Update</button>
+        <button *ngIf="isAddMode" mat-flat-button color="primary" (click)="create()">Add</button>
+    </form>
+</div>

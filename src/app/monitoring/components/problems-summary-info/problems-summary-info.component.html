@@ -1,0 +1,52 @@
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Created</span>
+        <span matListItemLine>{{problem?.created | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Last Update</span>
+        <span>{{problem?.lastupdate | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>State</span>
+        <span>{{problem?.state}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Status</span>
+        <span>{{problem?.status}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Type</span>
+        <span>{{problem?.type}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Subtype</span>
+        <span>{{problem?.subtype}}</span>
+    </mat-list-item>
+</mat-list>
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Level</span>
+        <span>{{problem?.level}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>observerId</span>
+        <span>{{problem?.observerId}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>RelatesTo</span>
+        <span>{{problem?.relatesTo}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Parent</span>
+        <span>{{problem?.parent}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>description</span>
+        <span>{{problem?.description}}</span>
+    </mat-list-item>
+    <mat-list-item>
+    </mat-list-item>
+</mat-list>
+
+

@@ -1,0 +1,14 @@
+
+<div class="spinner-container" *ngIf="(loading)">
+    <mat-spinner></mat-spinner>
+</div>
+<!--PAGE CONTENT-->
+<div *ngIf="!loading">
+    <h3> Monitoring > <ins>Issues</ins> </h3>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <app-issues-table class="table" [dataInput]="issues"></app-issues-table>
+    <button class="button" mat-flat-button color="primary" (click)="create()">New</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,85 @@
+<div class="spinner-container" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+
+
+<div class="container">
+    <!--TABLE -->
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+
+            <!--ID -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+            <!--CREATED -->
+            <ng-container matColumnDef="created">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> CREATED </th>
+                <td mat-cell *matCellDef="let row"> {{row.created | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+            <!--LAST UPDATE -->
+            <ng-container matColumnDef="lastupdate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> LAST UPDATE </th>
+                <td mat-cell *matCellDef="let row"> {{row.lastupdate | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+            <!--STATE -->
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> STATE </th>
+                <td mat-cell *matCellDef="let row"> {{row.state}} </td>
+            </ng-container>
+            <!--STATUS -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> STATUS </th>
+                <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            </ng-container>
+            <!--OPERATION (relates to) -->
+            <ng-container matColumnDef="relatesTo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> OPERATION </th>
+                <td mat-cell *matCellDef="let row"> {{row.relatesTo}} </td>
+            </ng-container>
+            <!--DEVICE ID -->
+            <ng-container matColumnDef="deviceId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> DEVICE </th>
+                <td mat-cell *matCellDef="let row"> {{row.deviceId}} </td>
+            </ng-container>
+            <!--FLIGHT ID -->
+            <ng-container matColumnDef="flightId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> FLIGHT </th>
+                <td mat-cell *matCellDef="let row"> {{row.flightId}} </td>
+            </ng-container>
+            <!--ACTIONS -->
+            <ng-container matColumnDef="info">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let row">
+                    <button (click)="search(row.id)" mat-icon-button color="primary">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <button (click)="edit(row.id)" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="delete(row.id)" mat-icon-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [length]="issuesCount" [pageSize]="5" [pageSizeOptions]="[5,10,20]"
+            aria-label="Select page of GitHub search results"></mat-paginator>
+
+    </div>
+</div>

@@ -1,0 +1,19 @@
+
+.container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+  }
+  
+  form {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+  }
+
+  h3{
+    padding-left: 10px;
+  }
+  
+  

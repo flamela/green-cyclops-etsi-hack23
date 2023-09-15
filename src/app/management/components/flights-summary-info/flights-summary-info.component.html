@@ -1,0 +1,44 @@
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Created</span>
+        <span matListItemLine>{{flight?.created | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Last Update</span>
+        <span>{{flight?.lastUpdate | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Name</span>
+        <span>{{flight?.name}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>State</span>
+        <span>{{flight?.state}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Status</span>
+        <span>{{flight?.status}}</span>
+    </mat-list-item>
+</mat-list>
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Zone</span>
+        <span matListItemLine>{{flight?.zoneId}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Flight Path</span>
+        <span>{{flight?.flightPath}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Operation</span>
+        <span>{{flight?.parent}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Device</span>
+        <span>{{flight?.relatedTo}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Profile</span>
+        <span>{{flight?.profileName}}</span>
+    </mat-list-item>
+</mat-list>

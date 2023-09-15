@@ -1,0 +1,57 @@
+.tree {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.tree ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.tree .toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgb(7, 33, 70);
+  font-weight: bold;
+}
+
+.tree .toggle-icon {
+  margin-right: 5px;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.tree .collapsed .toggle-icon {
+  transform: rotate(90deg);
+}
+
+.items-components {
+  display: flex;
+}
+
+.search-button-icons {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: font-size 0.1s ease;
+}
+.search-button-icons:hover {
+  font-size: 30px;
+}
+
+h3{
+  padding-left: 10px;
+}
+
+.select-link{
+cursor: pointer;
+color: rgb(7, 33, 70);
+font-weight: bold;
+}

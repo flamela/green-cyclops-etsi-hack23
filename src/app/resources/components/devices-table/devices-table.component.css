@@ -1,0 +1,39 @@
+.container {
+  margin-top: 10px;
+}
+
+table {
+
+  width: 100%;
+  }
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+
+  .status-available{
+    background-color:#4CAF50;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    text-decoration:none;
+    padding: 1px 20px;
+    }
+
+    .status-unavailable{
+      background-color:#af4c4c;
+      border-radius:28px;
+      border:1px solid #af4c4c;
+      display:inline-block;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:15px;
+      text-decoration:none;
+      padding: 1px 20px;
+      }
+  

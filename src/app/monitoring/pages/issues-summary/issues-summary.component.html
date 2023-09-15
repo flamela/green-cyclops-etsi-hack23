@@ -1,0 +1,7 @@
+<h3> Monitoring > Issues ><ins> Summary</ins></h3>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <app-issues-summary-info class="info-container" [dataInput]="issue$"></app-issues-summary-info>
+    <a class="button-container" mat-raised-button color="primary" routerLink="/monitoring/problem-mmgmt" routerLinkActive="active"><span>Create a new problem</span></a>
+    <app-issues-summary-map class="map-container" [dataInput]="alarms$"></app-issues-summary-map>
+    <app-issues-summary-table class="table-container" [dataInput]="alarms$"></app-issues-summary-table>
+</div>

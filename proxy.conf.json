@@ -1,0 +1,39 @@
+{
+    "/devices/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/operations/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/profiles/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/flights/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/zones/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/paths/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/alarms/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/issues/*": {
+        "target": "http://host:port",
+        "secure": false
+    },
+    "/problems/*": {
+        "target": "http://host:port",
+        "secure": false
+    }
+
+}

@@ -1,0 +1,18 @@
+.table {
+    width: 80%;
+  }
+  .button {
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+  }
+  .row {
+      padding-bottom: 1rem;
+      padding-left: 12rem;
+      padding-top: 2rem
+  }
+  h3{
+    padding-left: 10px;
+  }
+
+

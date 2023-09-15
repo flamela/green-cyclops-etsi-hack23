@@ -1,0 +1,36 @@
+<h3> Management > Profiles >
+    <ins *ngIf="isAddMode">Add</ins>
+    <ins *ngIf="!isAddMode">Edit</ins>
+</h3>
+
+<div class="container">
+    <form [formGroup]="form" class="form">
+        <!--PROFILE-->
+        <mat-form-field>
+            <mat-label>Profile</mat-label>
+            <input matInput formControlName="profile">
+            <mat-error *ngIf="f['profile']?.invalid && f['profile']?.touched">
+                <span *ngIf="f['profile']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--NAME-->
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="f['name']?.invalid && f['name']?.touched">
+                <span *ngIf="f['name']?.hasError('required')">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <!--DESCRIPTION-->
+        <mat-form-field>
+            <mat-label>description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <!--ACTIVE-->
+        <p> <mat-checkbox formControlName="active">Active</mat-checkbox></p>
+
+        <!--Create Button-->
+        <button *ngIf="!isAddMode" mat-flat-button color="primary" (click)="update()">Update</button>
+        <button *ngIf="isAddMode" mat-flat-button color="primary" (click)="create()">Add</button>
+    </form>
+</div>

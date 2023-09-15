@@ -1,0 +1,12 @@
+<div class="spinner-container" *ngIf="(loading)">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading && imagesUrl.length > 0" class="mosaic">
+    <div  *ngFor="let imageUrl of imagesUrl">
+        <img class="images" [src]="imageUrl" alt="Imagen">
+     </div>
+</div>
+<div class="no-pictures-message" *ngIf="!loading && imagesUrl.length == 0">
+    <h2>No pictures found</h2>
+    <p>Sorry, no images are available.</p>
+</div>

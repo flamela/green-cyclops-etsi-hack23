@@ -1,0 +1,61 @@
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Created</span>
+        <span matListItemLine>{{issue?.created | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Last Update</span>
+        <span>{{issue?.lastupdate | date:'dd/MM/yyyy'}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>State</span>
+        <span>{{issue?.state}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Status</span>
+        <span>{{issue?.status}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Type</span>
+        <span>{{issue?.type}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Subtype</span>
+        <span>{{issue?.subtype}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Level</span>
+        <span>{{issue?.level}}</span>
+    </mat-list-item>
+</mat-list>
+<mat-list class="detail-container">
+    <mat-list-item>
+        <span matListItemTitle>Longitude</span>
+        <span matListItemLine>{{issue?.longitude}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Latitude</span>
+        <span>{{issue?.latitude}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Altitude</span>
+        <span>{{issue?.altitude}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>FlightPath</span>
+        <span>{{issue?.flightPath}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>FlightId</span>
+        <span>{{issue?.flightId}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>RelatesTo</span>
+        <span>{{issue?.relatesTo}}</span>
+    </mat-list-item>
+    <mat-list-item>
+        <span matListItemTitle>Parent</span>
+        <span>{{issue?.parent}}</span>
+    </mat-list-item>
+</mat-list>
+

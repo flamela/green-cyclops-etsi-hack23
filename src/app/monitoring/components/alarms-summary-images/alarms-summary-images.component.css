@@ -1,0 +1,47 @@
+.mosaic {
+    
+    margin-left: 5px;
+    max-height: 600px; /* Altura máxima del contenedor */
+    overflow: auto; /* Habilita el desplazamiento */
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .images {
+    width: 600px;
+    height: 300px;
+}
+
+.spinner-container mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-pictures-message{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.no-pictures-message h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.no-pictures-message p {
+  font-size: 18px;
+  text-align: center;
+  color: #666;
+}
+
+
+  

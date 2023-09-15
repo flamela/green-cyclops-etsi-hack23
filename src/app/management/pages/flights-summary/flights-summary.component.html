@@ -1,0 +1,6 @@
+<h3> Management > Flights ><ins> Summary</ins></h3>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <app-flights-summary-info class="info-container" [dataInput]="flight$"></app-flights-summary-info>
+    <app-flights-summary-map class="map-container" [dataInput]="alarms$"></app-flights-summary-map>
+    <app-flights-summary-table class="table-container" [dataInput]="alarms$"></app-flights-summary-table>
+</div>

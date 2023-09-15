@@ -1,0 +1,135 @@
+<mat-sidenav-container class="sidenav-container">
+
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+
+    <img class="logo-image" src="../../assets/img/optare_logotipo_blanco_apilado.png">
+
+    <mat-nav-list>
+
+      <mat-list-item routerLink="#">
+        <div class="container">
+          <span class="text-colour-home">Home</span>
+          <mat-icon class="text-icone-home">home</mat-icon>
+        </div>
+      </mat-list-item>
+
+      <!--DRONE-->
+      <mat-list-item routerLink="/drone">
+        <div class="container">
+          <span class="text-colour-home" style="margin-left: 9px;">Launcher</span>
+          <mat-icon class="text-icone-home">flight</mat-icon>
+        </div>
+      </mat-list-item>
+
+      <!--MANAGEMENT-->
+      <mat-expansion-panel class="sidenav" [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          <div class="container">
+            <span class="text-colour">Management</span>
+            <mat-icon class="text-icone">dns</mat-icon>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/management/operations" routerLinkActive="active"><span class="text-colour">Operations</span></a>
+          <a mat-list-item routerLink="/management/flights" routerLinkActive="active"><span class="text-colour">Flights</span></a>
+          <a mat-list-item routerLink="/management/profiles" routerLinkActive="active"><span class="text-colour">Profiles</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+
+      <!--RESOURCES-->
+      <mat-expansion-panel class="sidenav" [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          <div class="container">
+            <span class="text-colour">Resources</span>
+            <mat-icon class="text-icone">developer_board</mat-icon>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/resources/devices" routerLinkActive="active"><span class="text-colour">Drones</span></a>
+          <a mat-list-item routerLink="/resources/sites" routerLinkActive="active"><span class="text-colour">Base Sites</span></a>
+          <a mat-list-item routerLink="/resources/paths" routerLinkActive="active"><span class="text-colour">Flight Paths</span></a>
+          <a mat-list-item routerLink="/resources/iot" routerLinkActive="active"><span class="text-colour">IoT</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+
+      <!--MONITORING-->
+      <mat-expansion-panel class="sidenav" [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          <div class="container">
+            <span class="text-colour">Monitoring</span>
+            <mat-icon class="text-icone">warning</mat-icon>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/monitoring/sandbox" routerLinkActive="active"><span class="text-colour">Dashboard</span></a>
+          <a mat-list-item routerLink="/monitoring/alarms" routerLinkActive="active"><span class="text-colour">Alarms</span></a>
+          <a mat-list-item routerLink="/monitoring/issues" routerLinkActive="active"><span class="text-colour">Issues</span></a>
+          <a mat-list-item routerLink="/monitoring/problem-mmgmt" routerLinkActive="active"><span class="text-colour">Problem Mmgmt</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <!--NETWORK-->
+      <mat-expansion-panel class="sidenav" [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          <div class="container">
+            <span class="text-colour">Network</span>
+            <mat-icon class="text-icone">network_wifi</mat-icon>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/network/edge" routerLinkActive="active"><span class="text-colour">Edge</span></a>
+          <a mat-list-item routerLink="/network/radio" routerLinkActive="active"><span class="text-colour">Radio</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <!--SETTINGS-->
+      <mat-expansion-panel class="sidenav" [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          <div class="container">
+            <span class="text-colour">Settings</span>
+            <mat-icon class="text-icone">settings</mat-icon>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/settings/monitoring" routerLinkActive="active"><span class="text-colour">Monitoring</span></a>
+          <a mat-list-item routerLink="/settings/operations" routerLinkActive="active"><span class="text-colour">Operations</span></a>
+          <a mat-list-item routerLink="/settings/users" routerLinkActive="active"><span class="text-colour">Users</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+
+      <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+
+      <span *ngIf="loggedIn">{{username}}</span>
+      <span *ngIf="!loggedIn">Log In</span>
+
+
+      <button mat-icon-button *ngIf="!loggedIn" (click)="login()"><mat-icon>login</mat-icon></button>
+      <button mat-icon-button *ngIf="loggedIn" (click)="logout()"><mat-icon>logout</mat-icon></button>
+
+    </mat-toolbar>
+
+    <div class="spinner-container" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <router-outlet *ngIf="loaded"></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,8 @@
+<!--PAGE CONTENT-->
+<div *ngIf="loaded$ | async">
+    <h3> Management > <ins>Flights</ins></h3>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      <app-flights-table class="table" [routerNavigate]="routerNavigate" [dataInput]="flights$ | async"></app-flights-table>
+      <button class="button" mat-flat-button color="primary" (click)="create()">New</button>
+    </div>
+  </div>
